@@ -1,0 +1,26 @@
+<div class="container">
+    <h1 class="mt-3">Cuisines List</h1>
+    <div class="d-flex justify-content-end mt-3">
+        <a class="btn btn-primary" [routerLink]="['/admin/cuisines/add']">Add Cuisine</a>
+    </div>
+    <ng-container *ngIf="cuisines$ | async as cuisines">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Main Cuisine</th>
+                    <th>Sub Cuisine</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cuisine of cuisines">
+                    <td>{{cuisine.id}}</td>
+                    <td>{{cuisine.mainCuisine}}</td>
+                    <td>{{cuisine.subCuisine}}</td>
+                    <td><a class="btn btn-light" [routerLink]="['/admin/cuisines',cuisine.id]" >Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+</div>
