@@ -1,0 +1,24 @@
+<div class="container">
+    <h1 class="mt-3">Bases List</h1>
+    <div class="d-flex justify-content-end mt-3">
+        <a class="btn btn-primary" [routerLink]="['/admin/bases/add']">Add New Base</a>
+    </div>
+    <ng-container *ngIf="bases$ | async as bases">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Base</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let base of bases">
+                    <td>{{base.id}}</td>
+                    <td>{{base.name}}</td>
+                    <td><a class="btn btn-light" [routerLink]="['/admin/bases',base.id]" >Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+</div>

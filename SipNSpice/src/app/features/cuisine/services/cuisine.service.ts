@@ -15,7 +15,7 @@ export class CuisineService {
 
   getAllCuisine():Observable<Cuisine[]>
   {
-    return this.http.get<Cuisine[]>(`${environment.apiBaseUrl}/api/cuisines`)
+    return this.http.get<Cuisine[]>(`${environment.apiBaseUrl}/api/cuisines`);
   }
 
   addCuisine(model: AddCuisineRequest):Observable<void>

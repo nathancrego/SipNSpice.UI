@@ -1,32 +1,24 @@
 <div class="container">
-    <h1 class="mt-3">Edit Cuisine</h1>
+    <h1 class="mt-3">Edit Base</h1>
 
-    <ng-container *ngIf="cuisine; else notFound">
+    <ng-container *ngIf="base; else notFound">
         <form #form="ngForm" (ngSubmit)="onFormSubmit()">
             <div class="mt-2">
                 <div class="mt-3">
-                    <label class="form-label" for="cuisineId">Cuisine ID</label>
+                    <label class="form-label" for="baseId">Base ID</label>
                     <input type="text" disabled 
-                    id="cuisineId"
+                    id="baseId"
                     class="form-control"
-                    name="cuisineId"
-                    value="{{cuisine.id}}">
+                    name="baseId"
+                    value="{{base.id}}">
                 </div>
                 <div class="mt-3">
-                    <label class="form-label" for="mainCuisine">Main Cuisine</label>
+                    <label class="form-label" for="baseName">Base</label>
                     <input type="text"
-                    id="mainCuisine"
+                    id="baseName"
                     class="form-control"
-                    name="mainCuisine"
-                    [(ngModel)]="cuisine.mainCuisine">
-                </div>
-                <div class="mt-3">
-                    <label class="form-label" for="subCuisine">Sub Cuisine</label>
-                    <input type="text"
-                    id="subCuisine"
-                    class="form-control"
-                    name="subCuisine"
-                    [(ngModel)]="cuisine.subCuisine">
+                    name="baseName"
+                    [(ngModel)]="base.name">
                 </div>
                 <div class="mt-3 d-flex">
                     <button type="submit" class="btn btn-primary">Save</button>
@@ -40,7 +32,7 @@
     <!--template using temp variable for notFound-->
     <ng-template #notFound>
         <div class="alert alert-warning" role="alert">
-            Category not found!
+            Base not found!
           </div>
     </ng-template>
 

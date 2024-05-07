@@ -1,0 +1,96 @@
+<div class="container">
+    <h1 class="mt-3">Add Recipe</h1>
+    <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+        <div class="mt-2 mb-5">
+            
+            <div class="mt-3">
+                <label for="name" class="form-label">Recipe Name</label>
+                <input type="text" 
+                class="form-control"
+                id="name"
+                name="name"
+                [(ngModel)]="model.name"> <!--2 way binding-->
+            </div>
+
+            <div class="mt-3">
+                <label for="shortDescription" class="form-label">Short Description</label>
+                <input type="text" 
+                class="form-control"
+                id="shortDescription"
+                name="shortDescription"
+                [(ngModel)]="model.shortDescription">
+            </div>
+
+            <div class="mt-3">
+                <label for="description" class="form-label">Recipe Description</label>
+                <div class="d-flex flex-row">
+                    <div class="col-6 p-2">
+                        <textarea 
+                            name="description" 
+                            id="description"
+                            class="form-control"
+                            style="height: 350px; max-height: 350px;"
+                            [(ngModel)]="model.description">
+                        </textarea>
+                    </div>
+                    <div class="col-6 p-2" style="max-height: 350px;overflow-y: scroll;">
+                        <markdown [data]="model.description"></markdown>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" 
+                class="form-control"
+                id="author"
+                name="author"
+                [(ngModel)]="model.author">
+            </div>
+
+            <div class="mt-3">
+                <label for="imageUrl" class="form-label">ImageUrl</label>
+                
+                <ng-container *ngIf="model.imageUrl !== ''">
+                    <div>
+                        <img [src]="model.imageUrl" style="height: 100" class="my-2">
+                    </div>
+                </ng-container>
+
+                <input type="text" 
+                class="form-control"
+                id="imageUrl"
+                name="imageUrl"
+                [(ngModel)]="model.imageUrl">
+            </div>
+
+            <!--one way binding-->
+            <div class="mt-3">
+                <label for="publishedDate" class="form-label">Published Date</label>
+                <input type="date" 
+                class="form-control"
+                id="publishedDate"
+                name="publishedDate"
+                value="{{model.publishedDate}}"
+                [ngModel]="model.publishedDate | date:'yyyy-MM-dd'"
+                (ngModelChange)="model.publishedDate = $event"> 
+            </div>
+
+            <div class="mt-3">
+                <label class="form-label" for="cuisines">Cuisine</label>
+                <ng-container *ngIf="cuisines$ | async as cuisines">
+                    <select class="form-control" [(ngModel)]="model.cuisines" name="cuisines" id="cuisines" multiple>
+                        <option *ngFor="let cuisine of cuisines" [value]="cuisine.id">
+                            {{cuisine.mainCuisine + '-' + cuisine.subCuisine}}
+                        </option>
+                    </select>
+                </ng-container>  
+            </div>
+            
+              <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+
+        </div>
+    </form>
+</div>
