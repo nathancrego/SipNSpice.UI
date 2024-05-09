@@ -20,7 +20,7 @@ export class CuisineService {
 
   addCuisine(model: AddCuisineRequest):Observable<void>
   {
-    return this.http.post<void>(`${environment.apiBaseUrl}/api/cuisines`,model); //Injects the data passed via forms in to api
+    return this.http.post<void>(`${environment.apiBaseUrl}/api/cuisines?addAuth=true`,model); //Injects the data passed via forms in to api
   }
 
   getCuisineById(id: string):Observable<Cuisine>
@@ -30,12 +30,12 @@ export class CuisineService {
 
   updateCuisine(id: string, updateCuisineRequest: UpdateCuisineRequest): Observable<Cuisine>
   {
-    return this.http.put<Cuisine>(`${environment.apiBaseUrl}/api/cuisines/${id}`,updateCuisineRequest);
+    return this.http.put<Cuisine>(`${environment.apiBaseUrl}/api/cuisines/${id}?addAuth=true`,updateCuisineRequest);
   }
 
   deleteCuisine(id: string):Observable<Cuisine>
   {
-    return this.http.delete<Cuisine>(`${environment.apiBaseUrl}/api/cuisines/${id}`);
+    return this.http.delete<Cuisine>(`${environment.apiBaseUrl}/api/cuisines/${id}?addAuth=true`);
   }
 
 }

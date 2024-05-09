@@ -15,7 +15,7 @@ export class RecipeService {
 
   createRecipe(data: AddRecipe): Observable<Recipe>
   {
-    return this.http.post<Recipe>(`${environment.apiBaseUrl}/api/recipes`,data);
+    return this.http.post<Recipe>(`${environment.apiBaseUrl}/api/recipes?addAuth=true`,data);
   }
 
   getAllRecipes():Observable<Recipe[]>
@@ -29,12 +29,12 @@ export class RecipeService {
 
   updateRecipe(id: string, updateRecipe:UpdateRecipe): Observable<Recipe>
   {
-    return this.http.put<Recipe>(`${environment.apiBaseUrl}/api/recipes/${id}`,updateRecipe);
+    return this.http.put<Recipe>(`${environment.apiBaseUrl}/api/recipes/${id}?addAuth=true`,updateRecipe);
   }
 
   deleteRecipe(id: string):Observable<Recipe>
   {
-    return this.http.delete<Recipe>(`${environment.apiBaseUrl}/api/recipes/${id}`);
+    return this.http.delete<Recipe>(`${environment.apiBaseUrl}/api/recipes/${id}?addAuth=true`);
   }
 
 }

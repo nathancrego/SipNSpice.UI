@@ -19,8 +19,18 @@ import { AboutComponent } from './features/public/about/about.component';
 import { RecipeDetailsComponent } from './features/public/recipe-details/recipe-details.component';
 import { MocktailDetailsComponent } from './features/public/mocktail-details/mocktail-details.component';
 import { CocktailDetailsComponent } from './features/public/cocktail-details/cocktail-details.component';
+import { RegisterComponent } from './features/auth/register/register.component';
+import { LoginComponent } from './features/auth/login/login.component';
 
 const routes: Routes = [
+  {
+    path:'register',
+    component: RegisterComponent
+  },
+  {
+    path:'login',
+    component: LoginComponent
+  },
   {
     path: 'recipes',
     component:RecipeHomeComponent

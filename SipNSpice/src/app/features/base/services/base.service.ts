@@ -20,7 +20,7 @@ export class BaseService {
 
   createBase(model: AddBase):Observable<void>
   {
-    return this.http.post<void>(`${environment.apiBaseUrl}/api/bases`,model)
+    return this.http.post<void>(`${environment.apiBaseUrl}/api/bases?addAuth=true`,model)
   }
 
   getBaseById(id: string):Observable<Base>
@@ -30,11 +30,11 @@ export class BaseService {
 
   updateBase(id: string, updateBase: UpdateBase):Observable<Base>
   {
-    return this.http.put<Base>(`${environment.apiBaseUrl}/api/bases/${id}`,updateBase);
+    return this.http.put<Base>(`${environment.apiBaseUrl}/api/bases/${id}?addAuth=true`,updateBase);
   }
 
   deleteBase(id: string):Observable<Base>
   {
-    return this.http.delete<Base>(`${environment.apiBaseUrl}/api/bases/${id}`);
+    return this.http.delete<Base>(`${environment.apiBaseUrl}/api/bases/${id}?addAuth=true`);
   }
 }

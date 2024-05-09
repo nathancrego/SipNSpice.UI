@@ -15,7 +15,7 @@ export class DrinkService {
 
   createDrink(addDrink: AddDrink):Observable<Drink>
   {
-    return this.http.post<Drink>(`${environment.apiBaseUrl}/api/drinks`,addDrink);
+    return this.http.post<Drink>(`${environment.apiBaseUrl}/api/drinks?addAuth=true`,addDrink);
   }
 
   getAllDrinks():Observable<Drink[]>
@@ -30,12 +30,12 @@ export class DrinkService {
 
   updateDrink(id: string, updateDrink: UpdateDrink):Observable<Drink>
   {
-    return this.http.put<Drink>(`${environment.apiBaseUrl}/api/drinks/${id}`,updateDrink);
+    return this.http.put<Drink>(`${environment.apiBaseUrl}/api/drinks/${id}?addAuth=true`,updateDrink);
   }
 
   deleteDrink(id: string): Observable<Drink>
   {
-    return this.http.delete<Drink>(`${environment.apiBaseUrl}/api/drinks/${id}`);
+    return this.http.delete<Drink>(`${environment.apiBaseUrl}/api/drinks/${id}?addAuth=true`);
   }
 
   getAllMocktails(): Observable<Drink[]>

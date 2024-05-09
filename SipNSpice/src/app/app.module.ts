@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { CuisineListComponent } from './features/cuisine/cuisine-list/cuisine-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AddCuisineComponent } from './features/cuisine/add-cuisine/add-cuisine.component';
 import { EditCuisineComponent } from './features/cuisine/edit-cuisine/edit-cuisine.component';
@@ -26,6 +26,9 @@ import { AboutComponent } from './features/public/about/about.component';
 import { RecipeDetailsComponent } from './features/public/recipe-details/recipe-details.component';
 import { CocktailDetailsComponent } from './features/public/cocktail-details/cocktail-details.component';
 import { MocktailDetailsComponent } from './features/public/mocktail-details/mocktail-details.component';
+import { RegisterComponent } from './features/auth/register/register.component';
+import { LoginComponent } from './features/auth/login/login.component';
+import { AuthInterceptor } from './core/components/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { MocktailDetailsComponent } from './features/public/mocktail-details/moc
     AboutComponent,
     RecipeDetailsComponent,
     CocktailDetailsComponent,
-    MocktailDetailsComponent
+    MocktailDetailsComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +64,11 @@ import { MocktailDetailsComponent } from './features/public/mocktail-details/moc
     MarkdownModule.forRoot()
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

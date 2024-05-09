@@ -1,42 +1,66 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['recipes']">SipNSpice</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['recipes']">Recipes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['mocktails']">Mocktails</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['cocktails']">Cocktails</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" [routerLink]="['about']">About</a>
-          </li>
+  <div class="container">
+    <a class="navbar-brand">SipNSpice</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['recipes']">Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['mocktails']">Mocktails</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['cocktails']">Cocktails</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['about']">About</a>
+        </li>
+        <ng-container *ngIf="user !==undefined && user?.roles?.includes('Writer')">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Admin
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" [routerLink]="['/admin/cuisines']">Cuisines</a></li>
-              <li><hr class="dropdown-divider"></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" [routerLink]="['/admin/recipes']">Recipes</a></li>
-              <li><hr class="dropdown-divider"></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" [routerLink]="['/admin/bases']">Bases</a></li>
-              <li><hr class="dropdown-divider"></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" [routerLink]="['/admin/drinks']">Drinks</a></li>
             </ul>
           </li>
-        </ul>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+        </ng-container>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <div class="d-flex">
+
+        <ng-container *ngIf="user === undefined; else showLogout">
+          <!--Show Login Button-->
+          <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
+        </ng-container>
+        <ng-template #showLogout>
+          <div class="d-flex align-items-center">
+            <span>{{user?.email}}</span>
+            <button class="btn btn-primary ms-3" (click)="onLogout()">Logout</button>
+          </div>
+        </ng-template>
       </div>
+
     </div>
-  </nav>
+  </div>
+</nav>
