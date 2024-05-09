@@ -12,8 +12,43 @@ import { EditBaseComponent } from './features/base/edit-base/edit-base.component
 import { AddDrinkComponent } from './features/drink/add-drink/add-drink.component';
 import { DrinkListComponent } from './features/drink/drink-list/drink-list.component';
 import { EditDrinkComponent } from './features/drink/edit-drink/edit-drink.component';
+import { RecipeHomeComponent } from './features/public/recipe-home/recipe-home.component';
+import { MocktailHomeComponent } from './features/public/mocktail-home/mocktail-home.component';
+import { CocktailHomeComponent } from './features/public/cocktail-home/cocktail-home.component';
+import { AboutComponent } from './features/public/about/about.component';
+import { RecipeDetailsComponent } from './features/public/recipe-details/recipe-details.component';
+import { MocktailDetailsComponent } from './features/public/mocktail-details/mocktail-details.component';
+import { CocktailDetailsComponent } from './features/public/cocktail-details/cocktail-details.component';
 
 const routes: Routes = [
+  {
+    path: 'recipes',
+    component:RecipeHomeComponent
+  },
+  {
+    path:'recipes/:id',
+    component:RecipeDetailsComponent
+  },
+  {
+    path: 'mocktails',
+    component:MocktailHomeComponent
+  },
+  {
+    path:'mocktails/:id',
+    component:MocktailDetailsComponent
+  },
+  {
+    path: 'cocktails',
+    component:CocktailHomeComponent
+  },
+  {
+    path:'cocktails/:id',
+    component:CocktailDetailsComponent
+  },
+  {
+    path: 'about',
+    component:AboutComponent
+  },
   {
     path: 'admin/cuisines',
     component: CuisineListComponent

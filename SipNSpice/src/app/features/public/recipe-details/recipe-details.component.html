@@ -1,0 +1,42 @@
+<ng-container *ngIf="recipe$ | async as recipe"; else loader>
+
+    <div class="container">
+        <div class="py-5">
+            <div class="col-12 col-md-8 col-lg-6 mx-auto">
+                <img [src]="recipe.imageUrl" [title]="recipe.name" class="img-fluid">
+
+                <h1 class="mt-4">{{recipe.name}}</h1>
+                <div class="d-flex justify-content-between mt-4">
+                    <span>{{recipe.name}}</span>
+                    <span>{{recipe.publishedDate | date:'dd-MM-yyyy'}}</span>
+                </div>
+
+                <div *ngIf="recipe.cuisines" class="mt-4">
+                    <span *ngFor="let cuisine of recipe.cuisines">
+                        <span class="badge bg-secondary me-2">
+                            {{cuisine.mainCuisine}}
+                        </span>
+                        <span class="badge text-bg-info me-2">
+                            {{cuisine.subCuisine}}
+                        </span>
+                         
+                    </span>
+                </div>
+
+                <div class="mt-4 blog-content">
+                    <markdown [data]="recipe.description"></markdown>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</ng-container>
+
+<ng-template #loader>
+    <div class="text-center mt-5">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>

@@ -19,6 +19,13 @@ import { EditBaseComponent } from './features/base/edit-base/edit-base.component
 import { AddDrinkComponent } from './features/drink/add-drink/add-drink.component';
 import { DrinkListComponent } from './features/drink/drink-list/drink-list.component';
 import { EditDrinkComponent } from './features/drink/edit-drink/edit-drink.component';
+import { RecipeHomeComponent } from './features/public/recipe-home/recipe-home.component';
+import { CocktailHomeComponent } from './features/public/cocktail-home/cocktail-home.component';
+import { MocktailHomeComponent } from './features/public/mocktail-home/mocktail-home.component';
+import { AboutComponent } from './features/public/about/about.component';
+import { RecipeDetailsComponent } from './features/public/recipe-details/recipe-details.component';
+import { CocktailDetailsComponent } from './features/public/cocktail-details/cocktail-details.component';
+import { MocktailDetailsComponent } from './features/public/mocktail-details/mocktail-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +42,14 @@ import { EditDrinkComponent } from './features/drink/edit-drink/edit-drink.compo
     EditBaseComponent,
     AddDrinkComponent,
     DrinkListComponent,
-    EditDrinkComponent
+    EditDrinkComponent,
+    RecipeHomeComponent,
+    CocktailHomeComponent,
+    MocktailHomeComponent,
+    AboutComponent,
+    RecipeDetailsComponent,
+    CocktailDetailsComponent,
+    MocktailDetailsComponent
   ],
   imports: [
     BrowserModule,

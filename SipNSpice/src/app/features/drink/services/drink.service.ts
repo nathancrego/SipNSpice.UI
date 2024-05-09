@@ -37,4 +37,14 @@ export class DrinkService {
   {
     return this.http.delete<Drink>(`${environment.apiBaseUrl}/api/drinks/${id}`);
   }
+
+  getAllMocktails(): Observable<Drink[]>
+  {
+    return this.http.get<Drink[]>(`${environment.apiBaseUrl}/api/drinks/mocktails`);
+  }
+
+  getAllCocktails(): Observable<Drink[]>
+  {
+    return this.http.get<Drink[]>(`${environment.apiBaseUrl}/api/drinks/cocktails`);
+  }
 }

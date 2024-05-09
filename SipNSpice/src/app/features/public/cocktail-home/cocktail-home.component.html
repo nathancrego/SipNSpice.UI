@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="my-5">
+        <div class="row align-items-strech">
+            <ng-container *ngIf="cock$ | async as cocks">
+                <div class="col-12 col-md-4 mb-3" *ngFor="let cock of cocks">
+                    <div class="card h-100">
+                        <img [src]="cock.imageUrl" class="card-img-top" [alt]="cock.name">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">
+                                {{cock.name}}
+                            </h5>
+                            <p class="card-text">
+                                {{cock.shortDescription}}
+                            </p>
+                        
+                            <span class="mb-2">{{cock.author}}
+                                <i class="d-flex justify-content-end">{{cock.publishedDate | date:'dd-MM-yyyy' }}</i>
+                            </span>
+                        
+                            <span class="d-flex align-items-end" style="flex:1">
+                                <a [routerLink]="['/cocktails',cock.id]" class="btn btn-primary">
+                                    Read More..</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+    </div>
+
+</div>
