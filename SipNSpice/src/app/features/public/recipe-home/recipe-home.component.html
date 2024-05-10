@@ -3,24 +3,24 @@
         <div class="row align-items-strech">
             <ng-container *ngIf="rec$ | async as recs">
                 <div class="col-12 col-md-4 mb-3" *ngFor="let rec of recs">
-                    <div class="card h-100">
+                    <div class="card border-secondary h-100">
                         <img [src]="rec.imageUrl" class="card-img-top" [alt]="rec.name">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">
+                            <h2 class="card-title">
                                 {{rec.name}}
-                            </h5>
+                            </h2>
                             <p class="card-text">
                                 {{rec.shortDescription}}
                             </p>
-                        
-                            <span class="mb-2">{{rec.author}}
-                                <i class="d-flex justify-content-end">{{rec.publishedDate | date:'dd-MM-yyyy' }}</i>
-                            </span>
-                        
-                            <span class="d-flex align-items-end" style="flex:1">
-                                <a [routerLink]="['/recipes',rec.id]" class="btn btn-primary">
-                                    Details..</a>
-                            </span>
+
+                            <div class="d-flex justify-content-between mt-1">
+                                <span>{{rec.author}}</span>
+                                <span>{{rec.publishedDate | date:'dd-MM-yyyy'}}</span>
+                            </div>
+                            
+                            <a [routerLink]="['/recipes',rec.id]" class="btn btn-primary btn-sm align-items-center justify-content-end mt-2" style="flex:none">
+                                Get Recipe</a>
+
                         </div>
                     </div>
                 </div>
