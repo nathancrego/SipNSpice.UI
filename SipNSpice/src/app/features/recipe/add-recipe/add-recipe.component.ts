@@ -44,6 +44,10 @@ export class AddRecipeComponent implements OnInit, OnDestroy {
     });
   }
 
+  onBack():void{
+    this.router.navigateByUrl('/admin/recipes');
+  }
+
   ngOnDestroy(): void {
     this.addRecipeSubscription?.unsubscribe();
   }

@@ -34,6 +34,10 @@ export class AddBaseComponent implements OnDestroy {
       });
     }
 
+    onBack():void{
+      this.router.navigateByUrl('/admin/recipes');
+    }
+
   ngOnDestroy(): void {
     this.addBaseSubscription?.unsubscribe();
   }

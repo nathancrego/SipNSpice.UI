@@ -45,6 +45,10 @@ export class AddDrinkComponent implements OnInit, OnDestroy {
     });
   }
 
+  onBack():void{
+    this.router.navigateByUrl('/admin/recipes');
+  }
+
   ngOnDestroy(): void {
     this.addDrinkSubscription?.unsubscribe();
   }

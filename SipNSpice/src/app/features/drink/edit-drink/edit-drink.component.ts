@@ -91,6 +91,10 @@ export class EditDrinkComponent implements OnInit, OnDestroy{
       }
   }
 
+  onBack():void{
+    this.router.navigateByUrl('/admin/drinks');
+  }
+
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
     this.getDrinkSubscription?.unsubscribe();
