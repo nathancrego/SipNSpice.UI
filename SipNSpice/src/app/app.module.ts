@@ -30,6 +30,7 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { AuthInterceptor } from './core/components/interceptors/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DataTablesModule } from 'angular-datatables';
+import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { DataTablesModule } from 'angular-datatables';
     CocktailDetailsComponent,
     MocktailDetailsComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ImageSelectorComponent
   ],
   imports: [
     BrowserModule,

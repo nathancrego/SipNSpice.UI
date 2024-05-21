@@ -7,6 +7,7 @@ import { RecipeService } from '../services/recipe.service';
 import { CuisineService } from '../../cuisine/services/cuisine.service';
 import { response } from 'express';
 import { UpdateRecipe } from '../model/update-recipe.model';
+import { ImageService } from '../../../shared/components/image-selector/image.service';
 
 @Component({
   selector: 'app-edit-recipe',
@@ -19,15 +20,18 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
   model?: Recipe;
   cuisines$?: Observable<Cuisine[]>;
   selectedCuisine?: string[];
+  isImageSelectorVisible: boolean = false;
   routeSubscription?: Subscription;
   getRecipeSubscription?: Subscription;
   updateRecipeSubscription?: Subscription;
   deleteRecipeSubscription?: Subscription;
+  imageSelectSubscription?: Subscription;
 
   constructor(private route:ActivatedRoute,
     private recipeService: RecipeService,
     private cuisineService: CuisineService,
-    private router:Router
+    private router:Router,
+    private imageService:ImageService
   )
   { }
 
@@ -48,6 +52,16 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
               }
             });
           }
+          this.imageSelectSubscription = this.imageService.onSelectImage()
+          .subscribe({
+            next:(response) => {
+              if(this.model)
+                {
+                  this.model.imageUrl = response.url;
+                  this.isImageSelectorVisible  =false;
+                }
+            }
+          })
       }
     });
   }
@@ -76,6 +90,15 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
   }
 
 
+  openImageSelector():void{
+    this.isImageSelectorVisible = true;
+
+  }
+  closeImageSelector():void{
+    this.isImageSelectorVisible = false;
+
+  }
+
 
   onDelete():void{
     if(this.id)
@@ -100,6 +123,7 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
     this.getRecipeSubscription?.unsubscribe();
     this.updateRecipeSubscription?.unsubscribe();
     this.deleteRecipeSubscription?.unsubscribe();
+    this.imageSelectSubscription?.unsubscribe();
   }
 
 }
