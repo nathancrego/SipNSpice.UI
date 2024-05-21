@@ -13,14 +13,13 @@
                                 {{mock.shortDescription}}
                             </p>
                         
-                            <span class="mb-2">{{mock.author}}
-                                <i class="d-flex justify-content-end">{{mock.publishedDate | date:'dd-MM-yyyy' }}</i>
-                            </span>
+                            <div class="d-flex justify-content-between mt-1">
+                                <span>{{mock.author}}</span>
+                                <span>{{mock.publishedDate | date:'dd-MM-yyyy'}}</span>
+                            </div>
                         
-                            <span class="d-flex align-items-end" style="flex:1">
-                                <a [routerLink]="['/mocktails',mock.id]" class="btn btn-primary">
-                                    Read More..</a>
-                            </span>
+                            <a [routerLink]="['/mocktails',mock.id]" class="btn btn-primary btn-sm align-items-center justify-content-end mt-2" style="flex:none">
+                                Get Recipe</a>
                         </div>
                     </div>
                 </div>

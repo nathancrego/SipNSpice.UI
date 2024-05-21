@@ -6,6 +6,7 @@ import { RecipeService } from '../services/recipe.service';
 import { Router } from '@angular/router';
 import { CuisineService } from '../../cuisine/services/cuisine.service';
 import { response } from 'express';
+import { RecipeImageSelectorService } from '../services/recipe-image-selector.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -15,11 +16,14 @@ import { response } from 'express';
 export class AddRecipeComponent implements OnInit, OnDestroy {
   model: AddRecipe;
   private addRecipeSubscription?: Subscription;
-  cuisines$?: Observable<Cuisine[]>
+  cuisines$?: Observable<Cuisine[]>;
+  isImageSelectorVisible: boolean = false;
+  imageSelectorSubscription?: Subscription;
 
   constructor(private recipeService: RecipeService,
     private router: Router,
-    private cuisineService: CuisineService) {
+    private cuisineService: CuisineService,
+  private recipeImageService: RecipeImageSelectorService) {
     this.model = {
       name: '',
       shortDescription: '',
@@ -33,6 +37,13 @@ export class AddRecipeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.cuisines$ = this.cuisineService.getAllCuisine();
+    this.imageSelectorSubscription = this.recipeImageService.onSelectImage()
+    .subscribe({
+      next:(selectedImage)=>{
+        this.model.imageUrl = selectedImage.url;
+        this.closeImageSelector();
+      }
+    });
   }
 
   onFormSubmit():void{
@@ -44,8 +55,22 @@ export class AddRecipeComponent implements OnInit, OnDestroy {
     });
   }
 
+  openImageSelector():void{
+    this.isImageSelectorVisible = true;
+
+  }
+  closeImageSelector():void{
+    this.isImageSelectorVisible = false;
+
+  }
+
+  onBack():void{
+    this.router.navigateByUrl('/admin/recipes');
+  }
+
   ngOnDestroy(): void {
     this.addRecipeSubscription?.unsubscribe();
+    this.imageSelectorSubscription?.unsubscribe();
   }
 
 }

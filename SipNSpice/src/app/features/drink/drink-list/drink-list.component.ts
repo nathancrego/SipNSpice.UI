@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Drink } from '../model/drink.model';
 import { DrinkService } from '../services/drink.service';
@@ -8,11 +8,18 @@ import { DrinkService } from '../services/drink.service';
   templateUrl: './drink-list.component.html',
   styleUrl: './drink-list.component.css'
 })
-export class DrinkListComponent implements OnInit {
+export class DrinkListComponent implements OnInit, AfterViewInit {
 
   drinks$?: Observable<Drink[]>;
 
   constructor(private drinkService: DrinkService){}
+
+  ngAfterViewInit(): void {
+    $('#drinkTable').DataTable({
+      paging:true,
+      searching:true,
+    })
+  }
 
 
   ngOnInit(): void {

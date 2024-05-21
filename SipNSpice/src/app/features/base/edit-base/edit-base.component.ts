@@ -68,6 +68,10 @@ export class EditBaseComponent implements OnInit, OnDestroy {
     }
   }
 
+  onBack():void{
+    this.router.navigateByUrl('/admin/bases');
+  }
+
   ngOnDestroy(): void {
     this.editBaseSubscription?.unsubscribe();
     this.deleteBaseSubscription?.unsubscribe();

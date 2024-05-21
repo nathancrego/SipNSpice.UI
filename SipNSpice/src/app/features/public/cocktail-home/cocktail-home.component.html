@@ -13,14 +13,13 @@
                                 {{cock.shortDescription}}
                             </p>
                         
-                            <span class="mb-2">{{cock.author}}
-                                <i class="d-flex justify-content-end">{{cock.publishedDate | date:'dd-MM-yyyy' }}</i>
-                            </span>
+                            <div class="d-flex justify-content-between mt-1">
+                                <span>{{cock.author}}</span>
+                                <span>{{cock.publishedDate | date:'dd-MM-yyyy'}}</span>
+                            </div>
                         
-                            <span class="d-flex align-items-end" style="flex:1">
-                                <a [routerLink]="['/cocktails',cock.id]" class="btn btn-primary">
-                                    Read More..</a>
-                            </span>
+                            <a [routerLink]="['/cocktails',cock.id]" class="btn btn-primary btn-sm align-items-center justify-content-end mt-2" style="flex:none">
+                                Get Recipe</a>
                         </div>
                     </div>
                 </div>

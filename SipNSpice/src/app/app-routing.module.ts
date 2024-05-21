@@ -1,7 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CuisineListComponent } from './features/cuisine/cuisine-list/cuisine-list.component';
-import { AddCuisineComponent } from './features/cuisine/add-cuisine/add-cuisine.component';
 import { EditCuisineComponent } from './features/cuisine/edit-cuisine/edit-cuisine.component';
 import { RecipeListComponent } from './features/recipe/recipe-list/recipe-list.component';
 import { AddRecipeComponent } from './features/recipe/add-recipe/add-recipe.component';
@@ -62,10 +61,6 @@ const routes: Routes = [
   {
     path: 'admin/cuisines',
     component: CuisineListComponent
-  },
-  {
-    path: 'admin/cuisines/add',
-    component: AddCuisineComponent
   },
   {
     path: 'admin/cuisines/:id',

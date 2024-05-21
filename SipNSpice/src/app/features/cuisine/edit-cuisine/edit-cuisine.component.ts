@@ -48,7 +48,7 @@ export class EditCuisineComponent implements OnInit, OnDestroy {
       this.editCuisineSubscription = this.cuisineService.updateCuisine(this.id, updateCuisineRequest)
         .subscribe({
           next: (response) => {
-            this.router.navigateByUrl('/admin/categories')
+            this.router.navigateByUrl('/admin/cuisines')
           }
         });
     }
@@ -63,6 +63,10 @@ export class EditCuisineComponent implements OnInit, OnDestroy {
           }
         });
     }
+  }
+
+  onBack():void{
+    this.router.navigateByUrl('/admin/cuisines');
   }
 
   ngOnDestroy(): void {

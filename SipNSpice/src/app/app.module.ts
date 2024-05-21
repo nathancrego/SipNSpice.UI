@@ -7,7 +7,6 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { CuisineListComponent } from './features/cuisine/cuisine-list/cuisine-list.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AddCuisineComponent } from './features/cuisine/add-cuisine/add-cuisine.component';
 import { EditCuisineComponent } from './features/cuisine/edit-cuisine/edit-cuisine.component';
 import { RecipeListComponent } from './features/recipe/recipe-list/recipe-list.component';
 import { AddRecipeComponent } from './features/recipe/add-recipe/add-recipe.component';
@@ -29,13 +28,17 @@ import { MocktailDetailsComponent } from './features/public/mocktail-details/moc
 import { RegisterComponent } from './features/auth/register/register.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { AuthInterceptor } from './core/components/interceptors/auth.interceptor';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DataTablesModule } from 'angular-datatables';
+import { DrinkImageSelectorComponent } from './features/drink/drink-image-selector/drink-image-selector.component';
+import { RecipeImageSelectorComponent } from './features/recipe/recipe-image-selector/recipe-image-selector.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CuisineListComponent,
-    AddCuisineComponent,
     EditCuisineComponent,
     RecipeListComponent,
     AddRecipeComponent,
@@ -54,13 +57,16 @@ import { AuthInterceptor } from './core/components/interceptors/auth.interceptor
     CocktailDetailsComponent,
     MocktailDetailsComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    DrinkImageSelectorComponent,
+    RecipeImageSelectorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    DataTablesModule,
     MarkdownModule.forRoot()
   ],
   providers: [
@@ -69,7 +75,8 @@ import { AuthInterceptor } from './core/components/interceptors/auth.interceptor
       useClass: AuthInterceptor,
       multi: true
     },
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

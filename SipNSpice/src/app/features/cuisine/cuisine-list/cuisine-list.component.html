@@ -1,16 +1,53 @@
 <div class="container">
-    <h1 class="mt-3">Cuisines List</h1>
-    <div class="d-flex justify-content-end mt-3">
-        <a class="btn btn-primary" [routerLink]="['/admin/cuisines/add']">Add Cuisine</a>
+    <h1 class="mt-2 text-center">Cuisines List</h1>
+    
+    <div class="d-flex justify-content-end mt-2">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCuisineModal">
+            <i class="bi bi-plus"></i>Add Cuisine
+        </button>
     </div>
+
+    <!-- Add Cuisine tModal -->
+    <div class="modal fade" id="addCuisineModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="cuisineModalLabel">Add Cuisine</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cuisineModalBody">
+                    <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+                        <div class="mt-3">
+                            <label class="form-label">Main Cuisine</label>
+                            <input type="text" id="mainCuisine" class="form-control" name="mainCuisine"
+                                [(ngModel)]="model.mainCuisine">
+                        </div>
+
+                        <div class="mt-3">
+                            <label class="form-label">Sub Cuisine</label>
+                            <input type="text" id="subCuisine" class="form-control" name="subCuisine"
+                                [(ngModel)]="model.subCuisine">
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <ng-container *ngIf="cuisines$ | async as cuisines">
-        <table class="table table-bordered mt-3">
+        <table datatable id="cuisineTable" class="table table-bordered table-hover mt-3">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Main Cuisine</th>
                     <th>Sub Cuisine</th>
-                    <th></th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +55,10 @@
                     <td>{{cuisine.id}}</td>
                     <td>{{cuisine.mainCuisine}}</td>
                     <td>{{cuisine.subCuisine}}</td>
-                    <td><a class="btn btn-light" [routerLink]="['/admin/cuisines',cuisine.id]" >Edit</a></td>
+                    <td>
+                        <a class="btn btn-outline-secondary" [routerLink]="['/admin/cuisines',cuisine.id]"><i
+                                class="bi bi-pencil-fill"></i></a>
+                    </td>
                 </tr>
             </tbody>
         </table>

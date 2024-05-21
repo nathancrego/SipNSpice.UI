@@ -2,19 +2,19 @@
     <h1 class="mt-3">Drinks List</h1>
 
     <div class="d-flex justify-content-end mt-3">
-        <a [routerLink]="['/admin/drinks/add']" class="btn btn-primary">Add New Drink</a>
+        <a [routerLink]="['/admin/drinks/add']" class="btn btn-primary"><i class="bi bi-plus"></i> Add New Drink</a>
     </div>
 
     <ng-container *ngIf="drinks$ | async as drinks">
 
-        <table class="table table-bordered mt-3">
+        <table datatable id="drinkTable" class="table table-bordered mt-3">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th>Author</th>
                     <th>Published Date</th>
                     <th>Base</th>
-                    <th></th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +27,8 @@
                             <span class="badge text-bg-info me-2">{{base.name}}</span>
                         </span>
                     </td>
-                    <td><a class="btn btn-light" [routerLink]="['/admin/drinks',drink.id]" >Edit</a></td>
+                    <td><a class="btn btn-outline-secondary" [routerLink]="['/admin/drinks',drink.id]"><i
+                        class="bi bi-pencil-fill"></i></a></td>
                 </tr>
             </tbody>
         </table>
