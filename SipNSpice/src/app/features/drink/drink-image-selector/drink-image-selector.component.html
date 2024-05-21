@@ -1,40 +1,36 @@
-<div class="card h-100">
+<div class="card h-70">
     <div class="card-header">
-        <h3 class="card-title">Drink Images</h3>
+        <h1 class="card-title text-center pt-3">Drink Images</h1>
     </div>
-
     <div class="card-body">
         <div class="d-flex flex-md-row flex-sm-column flex-wrap">
-            <div class="col-8 p-4" style="overflow-y: scroll;">
+            <div class="col-md-8 col-sm-12 p-4 scrollable-content">
                 <ng-container *ngIf="drinkImages$ | async as drinkImages">
-                    <div class="d-flex flex-wrap">
-                        <div *ngFor="let drinkImage of drinkImages"
-                        (click)="selectImage(drinkImage)" 
-                        style="min-width: 100px; justify-content: center; cursor: pointer;"
-                        class="me-1 bg-white d-flex align-items-center flex-column border p-3">
-                            <img [src]="drinkImage.url" title="image.title" style="height: 100px;">
-                            <span class="mt-1">{{drinkImage.title}}</span>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <div *ngFor="let drinkImage of drinkImages" 
+                            (click)="selectImage(drinkImage)" 
+                            class="image-container me-1 p-3">
+                            <img [src]="drinkImage.url" [alt]="drinkImage.title" class="image-preview">
+                            <span class="mt-1 image-title">{{drinkImage.title}}</span>
                         </div>
                     </div>
                 </ng-container>
             </div>
-            <div class="col-4 p-4 bg-light">
-                <h4>Upload Drink Image</h4>
-
+            <div class="col-md-4 col-sm-12 p-4 bg-light">
+                <h3 class="text-center">Upload Drink Image</h3>
                 <form #form="ngForm" (ngSubmit)="uploadDrinkImage()">
                     <div class="mt-3">
-                        <input type="file" class="form-control" (change)="onFileUploadChange($event)">
+                        <label for="fileUpload" class="form-label">Choose File</label>
+                        <input id="fileUpload" type="file" class="form-control" (change)="onFileUploadChange($event)">
                     </div>
                     <div class="mt-3">
-                        <input type="text" class="form-control" placeholder="File Name" name="filename"
-                        [(ngModel)]="fileName">
+                        <label for="fileName" class="form-label">File Name</label>
+                        <input id="fileName" type="text" class="form-control" placeholder="File Name" name="filename" [(ngModel)]="fileName" aria-label="File Name">
                     </div>
-
                     <div class="mt-3">
-                        <input type="text" class="form-control" placeholder="Title" name="title"
-                        [(ngModel)]="title">
+                        <label for="title" class="form-label">Title</label>
+                        <input id="title" type="text" class="form-control" placeholder="Title" name="title" [(ngModel)]="title" aria-label="Title">
                     </div>
-
                     <div class="mt-3">
                         <button type="submit" class="btn btn-dark">Upload</button>
                     </div>

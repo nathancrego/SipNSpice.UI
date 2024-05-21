@@ -2,35 +2,26 @@
     <h1 class="mt-3">Add Recipe</h1>
     <form #form="ngForm" (ngSubmit)="onFormSubmit()">
         <div class="mt-2 mb-5">
-            
+
             <div class="mt-3">
                 <label for="name" class="form-label">Recipe Name</label>
-                <input type="text" 
-                class="form-control"
-                id="name"
-                name="name"
-                [(ngModel)]="model.name"> <!--2 way binding-->
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name"
+                    placeholder="Recipe Name">
+                <!--2 way binding-->
             </div>
 
             <div class="mt-3">
                 <label for="shortDescription" class="form-label">Short Description</label>
-                <input type="text" 
-                class="form-control"
-                id="shortDescription"
-                name="shortDescription"
-                [(ngModel)]="model.shortDescription">
+                <input type="text" class="form-control" id="shortDescription" name="shortDescription"
+                    [(ngModel)]="model.shortDescription" placeholder="This Recipe is ..">
             </div>
 
             <div class="mt-3">
                 <label for="description" class="form-label">Recipe Description</label>
                 <div class="d-flex flex-row">
                     <div class="col-6 p-2">
-                        <textarea 
-                            name="description" 
-                            id="description"
-                            class="form-control"
-                            style="height: 350px; max-height: 350px;"
-                            [(ngModel)]="model.description">
+                        <textarea name="description" id="description" class="form-control"
+                            style="height: 350px; max-height: 350px;" [(ngModel)]="model.description">
                         </textarea>
                     </div>
                     <div class="col-6 p-2" style="max-height: 350px;overflow-y: scroll;">
@@ -41,41 +32,31 @@
 
             <div class="mt-3">
                 <label for="author" class="form-label">Author</label>
-                <input type="text" 
-                class="form-control"
-                id="author"
-                name="author"
-                [(ngModel)]="model.author">
+                <input type="text" class="form-control" id="author" name="author" [(ngModel)]="model.author"
+                placeholder="Enter Author">
             </div>
 
             <div class="mt-3">
-                <label for="imageUrl" class="form-label">Image
-                    <button type="button" class="btn btn-light" (click)="openImageSelector()">Select Image</button>
+                <label for="imageUrl" class="form-label">
+                    <button type="button" class="btn btn-primary btn-sm" (click)="openImageSelector()"><i
+                            class="bi bi-upload"></i> Upload Image</button>
                 </label>
-                
+
                 <ng-container *ngIf="model.imageUrl !== ''">
                     <div>
                         <img [src]="model.imageUrl" style="height: 200px" class="my-2">
                     </div>
                 </ng-container>
 
-                <input type="text" 
-                class="form-control"
-                id="imageUrl"
-                name="imageUrl"
-                [(ngModel)]="model.imageUrl">
+                <input type="text" class="form-control" id="imageUrl" name="imageUrl" [(ngModel)]="model.imageUrl">
             </div>
 
             <!--one way binding-->
             <div class="mt-3">
                 <label for="publishedDate" class="form-label">Published Date</label>
-                <input type="date" 
-                class="form-control"
-                id="publishedDate"
-                name="publishedDate"
-                value="{{model.publishedDate}}"
-                [ngModel]="model.publishedDate | date:'yyyy-MM-dd'"
-                (ngModelChange)="model.publishedDate = $event"> 
+                <input type="date" class="form-control" id="publishedDate" name="publishedDate"
+                    value="{{model.publishedDate}}" [ngModel]="model.publishedDate | date:'yyyy-MM-dd'"
+                    (ngModelChange)="model.publishedDate = $event">
             </div>
 
             <div class="mt-3">
@@ -86,19 +67,21 @@
                             {{cuisine.mainCuisine + '-' + cuisine.subCuisine}}
                         </option>
                     </select>
-                </ng-container>  
+                </ng-container>
             </div>
-            
-              <div class="d- flex mt-3">
-                <button type="submit" class="btn btn-primary"><i class="bi bi-floppy"></i> Save</button>
-                <button type="button" class="btn btn-outline-secondary ms-3"(click)="onBack()"> <i class="bi bi-arrow-left"></i> Back To List</button>
-              </div>
+
+            <div class="d- flex mt-3">
+                <button type="submit" class="btn btn-success"><i class="bi bi-floppy"></i> Save</button>
+                <button type="button" class="btn btn-outline-secondary ms-3" (click)="onBack()"><i
+                        class="bi bi-arrow-left"></i> Back To List</button>
+            </div>
 
         </div>
     </form>
 </div>
 
 <div class="images-container-modal" [ngClass]="{'d-block':isImageSelectorVisible,'d-none':!isImageSelectorVisible}">
-    <button type="button" class="btn btn-light" style="position: fixed; top: 10px;right: 10px;" (click)="closeImageSelector()">X</button>
+    <button type="button" class="btn btn-light" style="position: fixed; top: 10px;right: 10px;"
+        (click)="closeImageSelector()"><i class="bi bi-x"></i></button>
     <app-recipe-image-selector></app-recipe-image-selector>
 </div>
