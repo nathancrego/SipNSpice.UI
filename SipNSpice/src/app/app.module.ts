@@ -30,7 +30,9 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { AuthInterceptor } from './core/components/interceptors/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DataTablesModule } from 'angular-datatables';
-import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
+import { DrinkImageSelectorComponent } from './features/drink/drink-image-selector/drink-image-selector.component';
+import { RecipeImageSelectorComponent } from './features/recipe/recipe-image-selector/recipe-image-selector.component';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { ImageSelectorComponent } from './shared/components/image-selector/image
     MocktailDetailsComponent,
     RegisterComponent,
     LoginComponent,
-    ImageSelectorComponent
+    DrinkImageSelectorComponent,
+    RecipeImageSelectorComponent
   ],
   imports: [
     BrowserModule,

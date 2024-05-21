@@ -6,7 +6,7 @@ import { RecipeService } from '../services/recipe.service';
 import { Router } from '@angular/router';
 import { CuisineService } from '../../cuisine/services/cuisine.service';
 import { response } from 'express';
-import { ImageService } from '../../../shared/components/image-selector/image.service';
+import { RecipeImageSelectorService } from '../services/recipe-image-selector.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -23,7 +23,7 @@ export class AddRecipeComponent implements OnInit, OnDestroy {
   constructor(private recipeService: RecipeService,
     private router: Router,
     private cuisineService: CuisineService,
-  private imageService: ImageService) {
+  private recipeImageService: RecipeImageSelectorService) {
     this.model = {
       name: '',
       shortDescription: '',
@@ -37,13 +37,13 @@ export class AddRecipeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.cuisines$ = this.cuisineService.getAllCuisine();
-    this.imageSelectorSubscription = this.imageService.onSelectImage()
+    this.imageSelectorSubscription = this.recipeImageService.onSelectImage()
     .subscribe({
       next:(selectedImage)=>{
         this.model.imageUrl = selectedImage.url;
         this.closeImageSelector();
       }
-    })
+    });
   }
 
   onFormSubmit():void{
