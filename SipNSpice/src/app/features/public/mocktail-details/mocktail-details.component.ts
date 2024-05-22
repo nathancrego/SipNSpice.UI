@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Drink } from '../../drink/model/drink.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DrinkService } from '../../drink/services/drink.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class MocktailDetailsComponent implements OnInit {
   id:string | null = null;
   mocktail$?:Observable<Drink>;
 
-  constructor(private route:ActivatedRoute, private drinkService:DrinkService){}
+  constructor(private route:ActivatedRoute, private drinkService:DrinkService, private router:Router){}
 
   ngOnInit(): void {
     this.route.paramMap
@@ -29,6 +29,9 @@ export class MocktailDetailsComponent implements OnInit {
       {
         this.mocktail$ = this.drinkService.getDrinkById(this.id);
       }
+  }
+  onBack():void{
+    this.router.navigateByUrl('/mocktails');
   }
 
 }

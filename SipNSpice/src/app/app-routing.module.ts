@@ -14,16 +14,16 @@ import { EditDrinkComponent } from './features/drink/edit-drink/edit-drink.compo
 import { RecipeHomeComponent } from './features/public/recipe-home/recipe-home.component';
 import { MocktailHomeComponent } from './features/public/mocktail-home/mocktail-home.component';
 import { CocktailHomeComponent } from './features/public/cocktail-home/cocktail-home.component';
-import { AboutComponent } from './features/public/about/about.component';
 import { RecipeDetailsComponent } from './features/public/recipe-details/recipe-details.component';
 import { MocktailDetailsComponent } from './features/public/mocktail-details/mocktail-details.component';
 import { CocktailDetailsComponent } from './features/public/cocktail-details/cocktail-details.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { LoginComponent } from './features/auth/login/login.component';
+import { HomeComponent } from './features/public/home/home.component';
 
 const routes: Routes = [
   {
-    path:'',redirectTo:'/recipes',pathMatch:'full'
+    path:'',redirectTo:'/home',pathMatch:'full'
   },
   {
     path:'register',
@@ -32,6 +32,10 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
+  },
+  {
+    path:'home',
+    component:HomeComponent
   },
   {
     path: 'recipes',
@@ -56,10 +60,6 @@ const routes: Routes = [
   {
     path:'cocktails/:id',
     component:CocktailDetailsComponent
-  },
-  {
-    path: 'about',
-    component:AboutComponent
   },
   {
     path: 'admin/cuisines',

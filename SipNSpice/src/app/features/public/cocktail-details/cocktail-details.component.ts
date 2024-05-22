@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Drink } from '../../drink/model/drink.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DrinkService } from '../../drink/services/drink.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class CocktailDetailsComponent implements OnInit{
   id:string | null = null;
   cocktail$?:Observable<Drink>;
 
-  constructor(private route:ActivatedRoute, private drinkService:DrinkService){}
+  constructor(private route:ActivatedRoute, private drinkService:DrinkService, private router:Router){}
 
   ngOnInit(): void {
     this.route.paramMap
@@ -30,5 +30,10 @@ export class CocktailDetailsComponent implements OnInit{
         this.cocktail$ = this.drinkService.getDrinkById(this.id);
       }
   }
+
+  onBack():void{
+    this.router.navigateByUrl('/cocktails');
+  }
+
 
 }

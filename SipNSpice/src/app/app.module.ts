@@ -21,7 +21,6 @@ import { EditDrinkComponent } from './features/drink/edit-drink/edit-drink.compo
 import { RecipeHomeComponent } from './features/public/recipe-home/recipe-home.component';
 import { CocktailHomeComponent } from './features/public/cocktail-home/cocktail-home.component';
 import { MocktailHomeComponent } from './features/public/mocktail-home/mocktail-home.component';
-import { AboutComponent } from './features/public/about/about.component';
 import { RecipeDetailsComponent } from './features/public/recipe-details/recipe-details.component';
 import { CocktailDetailsComponent } from './features/public/cocktail-details/cocktail-details.component';
 import { MocktailDetailsComponent } from './features/public/mocktail-details/mocktail-details.component';
@@ -33,6 +32,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { DrinkImageSelectorComponent } from './features/drink/drink-image-selector/drink-image-selector.component';
 import { RecipeImageSelectorComponent } from './features/recipe/recipe-image-selector/recipe-image-selector.component';
 import { FooterComponent } from './features/public/footer/footer.component';
+import { HomeComponent } from './features/public/home/home.component';
 
 
 
@@ -54,7 +54,6 @@ import { FooterComponent } from './features/public/footer/footer.component';
     RecipeHomeComponent,
     CocktailHomeComponent,
     MocktailHomeComponent,
-    AboutComponent,
     RecipeDetailsComponent,
     CocktailDetailsComponent,
     MocktailDetailsComponent,
@@ -62,7 +61,8 @@ import { FooterComponent } from './features/public/footer/footer.component';
     LoginComponent,
     DrinkImageSelectorComponent,
     RecipeImageSelectorComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

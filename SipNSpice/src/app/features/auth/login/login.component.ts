@@ -35,8 +35,8 @@ export class LoginComponent {
             roles: response.roles
           });
 
-          //Direct to homepage (recipes)
-          this.router.navigateByUrl('/recipes');
+          //Direct to homepage
+          this.router.navigateByUrl('/home');
       },
       error: (err) => this.errorMessage = err.error
     });
