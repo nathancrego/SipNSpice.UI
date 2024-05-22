@@ -32,6 +32,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DataTablesModule } from 'angular-datatables';
 import { DrinkImageSelectorComponent } from './features/drink/drink-image-selector/drink-image-selector.component';
 import { RecipeImageSelectorComponent } from './features/recipe/recipe-image-selector/recipe-image-selector.component';
+import { FooterComponent } from './features/public/footer/footer.component';
+
 
 
 @NgModule({
@@ -59,7 +61,8 @@ import { RecipeImageSelectorComponent } from './features/recipe/recipe-image-sel
     RegisterComponent,
     LoginComponent,
     DrinkImageSelectorComponent,
-    RecipeImageSelectorComponent
+    RecipeImageSelectorComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

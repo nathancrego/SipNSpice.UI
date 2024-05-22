@@ -1,7 +1,7 @@
 <div class="container">
-    <h1 class="mt-3">Add New Drink</h1>
+    <h1 class="mt-2 text-center">Add New Drink</h1>
     <form #form="ngForm" (ngSubmit)="onFormSubmit()">
-        <div class="mt-2 mb-5">
+        <div class="mt-1 mb-5">
 
             <div class="mt-3">
                 <label for="name" class="form-label">Drink Name</label>
@@ -21,10 +21,10 @@
                 <div class="d-flex flex-row">
                     <div class="col-6 p-2">
                         <textarea name="description" id="description" class="form-control"
-                            style="height: 350px; max-height: 350px;" [(ngModel)]="model.description">
+                            style="height: 250px; max-height: 300px;" [(ngModel)]="model.description">
                         </textarea>
                     </div>
-                    <div class="col-6 p-2" style="max-height: 350px;overflow-y: scroll;">
+                    <div class="col-6 p-2" style="max-height: 300px;overflow-y: scroll;">
                         <markdown [data]="model.description"></markdown>
                     </div>
                 </div>

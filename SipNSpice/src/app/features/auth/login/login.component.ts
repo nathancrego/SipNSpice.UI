@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginComponent {
 
   model: LoginRequest;
+  errorMessage: string = '';
 
   constructor(private authService:AuthService, private router:Router, private cookieService:CookieService){
     this.model = {
@@ -36,7 +37,8 @@ export class LoginComponent {
 
           //Direct to homepage (recipes)
           this.router.navigateByUrl('/recipes');
-      }
+      },
+      error: (err) => this.errorMessage = err.error
     });
   }
 

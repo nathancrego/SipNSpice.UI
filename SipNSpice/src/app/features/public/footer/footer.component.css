@@ -1,0 +1,38 @@
+footer {
+    background-color: #000;
+    padding: 10px;
+    position:fixed;
+    width: 100%;
+    bottom: 2;
+  }
+  
+  #footer-content{
+    margin: 2;
+    color: #ced4da;
+
+  }
+
+#footerCopyright
+{
+  text-align: center;
+}
+#footerlinks a{
+  color: #ced4da !important;
+  text-decoration: none !important;
+}
+#footerlinks a:hover{
+  color: #eb6864 !important;
+  text-decoration: none !important;
+}
+
+#sociallinks p{
+  text-align: center;
+}
+
+#sociallinks a{
+  color: #ced4da !important;
+}
+#sociallinks a:hover{
+  color: #eb6864 !important;
+
+}
