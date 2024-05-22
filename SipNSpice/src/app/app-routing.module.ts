@@ -23,6 +23,9 @@ import { LoginComponent } from './features/auth/login/login.component';
 
 const routes: Routes = [
   {
+    path:'',redirectTo:'/recipes',pathMatch:'full'
+  },
+  {
     path:'register',
     component: RegisterComponent
   },

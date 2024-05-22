@@ -3,11 +3,11 @@ footer {
     padding: 10px;
     position:fixed;
     width: 100%;
-    bottom: 2;
+    bottom: 0;
   }
   
   #footer-content{
-    margin: 2;
+    margin: 1;
     color: #ced4da;
 
   }
