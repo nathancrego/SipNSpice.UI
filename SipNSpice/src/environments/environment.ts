@@ -1,3 +1,3 @@
 export const environment = {
-    apiBaseUrl: 'https://sipnspice.azurewebsites.net'
+    apiBaseUrl: 'https://sipnspice.azurewebsites.net/'
 };
